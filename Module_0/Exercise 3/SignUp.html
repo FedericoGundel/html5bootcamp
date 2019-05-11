@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Federico Gundel">
+    <meta name="description" content="Bootcamp Excersise">
+    <meta http-equiv="refresh" content="30">
+    <meta name="keywords" content="HTML">
+    <title>Sign Up</title>
+  </head>
+  <body>
+    <header>
+      <h1>Enter your personal data here:</h1>
+    </header>
+    <main>
+      <article class="">
+        <form class="" action="SignUp.html" method="post">
+          <section>
+            <label for="nombre">First Name</label>
+            <input type="text" name="nombre" value="" id="nombre" required>
+            <label for="apellido">Last Name</label>
+            <input type="text" name="apellido" value="" id="apellido" required>
+          </section>
+          <section>
+            <label for="email">Email</label>
+            <input type="email" name="email" value="" placeholder="Enter a valid email" id="email" required>
+          </section>
+          <section>
+            <label for="nacimiento">Birthday</label>
+            <input type="date" name="nacimiento" value="" id="nacimiento">
+          </section>
+          <section>
+            <label for="sport">Favorite Sport</label>
+            <select name="sport" id="sport">
+              <option value="futbol">Futbol</option>
+              <option value="tenis">Tenis</option>
+              <option value="voley">Voley</option>
+              <option value="beisbol">Beisbol</option>
+            </select>
+          </section>
+          <section>
+            <label for="about">About me:</label>
+            <textarea rows="4" cols="50" name="about" id="about">
+            </textarea>
+          </section>
+          <button type="submit" name="submit">Submit</button>
+          <button type="reset">Clear</button>
+        </form>
+      </article>
+    </main>
+    <footer>
+      <p>footer content</p>
+    </footer>
+  </body>
+</html>
