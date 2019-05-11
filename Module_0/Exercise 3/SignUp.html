@@ -11,26 +11,24 @@
   </head>
   <body>
     <header>
-      <h1>Enter your personal data here:</h1>
+      <h1>Sign Up</h1>
     </header>
     <main>
-      <article class="">
+      <article class=""><h2>Fill the form</h2>
         <form class="" action="SignUp.html" method="post">
-          <section>
+          <section><h3>Personal Data</h3>
             <label for="nombre">First Name</label>
             <input type="text" name="nombre" value="" id="nombre" required>
             <label for="apellido">Last Name</label>
             <input type="text" name="apellido" value="" id="apellido" required>
-          </section>
-          <section>
-            <label for="email">Email</label>
-            <input type="email" name="email" value="" placeholder="Enter a valid email" id="email" required>
-          </section>
-          <section>
             <label for="nacimiento">Birthday</label>
             <input type="date" name="nacimiento" value="" id="nacimiento">
           </section>
-          <section>
+          <section><h3>Contact</h3>
+            <label for="email">Email</label>
+            <input type="email" name="email" value="" placeholder="Enter a valid email" id="email" required>
+          </section>
+          <section><h3>Addicional information</h3>
             <label for="sport">Favorite Sport</label>
             <select name="sport" id="sport">
               <option value="futbol">Futbol</option>
@@ -38,8 +36,6 @@
               <option value="voley">Voley</option>
               <option value="beisbol">Beisbol</option>
             </select>
-          </section>
-          <section>
             <label for="about">About me:</label>
             <textarea rows="4" cols="50" name="about" id="about">
             </textarea>
