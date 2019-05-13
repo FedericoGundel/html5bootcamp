@@ -1,0 +1,19 @@
+html *{
+   font-size: 14px;
+   color: black;
+   font-family: Arial;
+}
+#MainHeader{
+  text-align: center;
+  background-color: red;
+}
+#MainAside{
+  background-color: blue;
+}
+#MainFooter{
+  text-align: center;
+  background-color: green;
+}
+nav{
+  background-color: orange;
+}
