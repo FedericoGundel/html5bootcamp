@@ -1,3 +1,9 @@
+*{
+  border-radius: 8px 8px 8px 8px;
+  -moz-border-radius: 8px 8px 8px 8px;
+  -webkit-border-radius: 8px 8px 8px 8px;
+}
+
 html *{
    font-size: 14px;
    color: black;
@@ -7,33 +13,43 @@ html *{
   text-align: center;
   background-color: red;
   display: block;
+  margin: 10px auto;
+  font-size: 46px;
 }
 .footer{
   text-align: center;
   background-color: yellow;
+  margin: 10px auto;
+  font-size: 10px;
 }
 .content{
+  float: left;
+  width: 60%;
+  margin: 10px auto;
   font-size: 14px;
   display: inline-block;
 }
 .sidebar{
+  float: right;
+  width: 20%;
   display: inline-block;
-  background-color: black;
+  margin: 10px auto;
+  font-size: 10px;
 }
 .navigation{
+  width: 20%;
+  float: left;
   display: inline-block;
-  background-color: orange;
   font-size: 12px;
-}
-.header{
-  font-size: 46px;
-}
-.footer, .sidebar{
-  font-size: 10px;
+  margin: 10px auto;
 }
 *[class$="r"]{
   background-color: magenta;
 }
 *[class*="a"]:not([class$="r"]){
   background-color: blue;
+}
+.Main{
+  display:flex;
+  flex-direction: row;
 }
