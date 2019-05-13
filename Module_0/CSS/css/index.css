@@ -3,17 +3,37 @@ html *{
    color: black;
    font-family: Arial;
 }
-#MainHeader{
+.header{
   text-align: center;
   background-color: red;
+  display: block;
 }
-#MainAside{
-  background-color: blue;
-}
-#MainFooter{
+.footer{
   text-align: center;
-  background-color: green;
+  background-color: yellow;
 }
-nav{
+.content{
+  font-size: 14px;
+  display: inline-block;
+}
+.sidebar{
+  display: inline-block;
+  background-color: black;
+}
+.navigation{
+  display: inline-block;
   background-color: orange;
+  font-size: 12px;
+}
+.header{
+  font-size: 46px;
+}
+.footer, .sidebar{
+  font-size: 10px;
+}
+*[class$="r"]{
+  background-color: magenta;
+}
+*[class*="a"]:not([class$="r"]){
+  background-color: blue;
 }
