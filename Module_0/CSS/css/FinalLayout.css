@@ -1,0 +1,29 @@
+.column{
+  width: 33%;
+  margin: 10px;
+}
+.row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.head{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 80px;
+  padding: 50px;
+}
+
+header>h1{
+  font-size: 24px;
+  font-style: italic;
+  width: 40%;
+}
+article{
+  width: 60%;
+}
+.container {
+  margin: 0 auto;
+  width: 90%;
+}
