@@ -1,6 +1,9 @@
 section{
   text-align: center;
 }
-#hidden{
+.hide{
   display: none;
+}
+.colorRed{
+  color: #FF0000;
 }
