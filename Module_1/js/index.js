@@ -50,21 +50,25 @@ function fetchRepos(name){
   fetch("https://api.github.com/search/repositories?q='"+name+"'",{
           "method": 'GET',
           "headers": {
-          'Content-Type': 'application/json'
+            'Content-Type': 'application/json'
           },
           "mode": 'cors',
-          "cache": 'default'}).then((response)=>{
-            response.json().then((repoJson)=>{
-              let selec = document.getElementById("RepoList");
-              let list;
-              list="<h2>Repositorios que coinciden con ese nombre:</h2><ul>";
-              for(repo of repoJson.items){
-                list+="<li>"+repo.full_name+"</li>";
-              }
-              list+="</ul>";
-              selec.innerHTML = list;
-            })
-          })
+          "cache": 'default'
+  })
+  .then((response)=>{
+    response.json()
+  })
+  .then((repoJson)=>{
+    let selec = document.getElementById("RepoList");
+    let list;
+    list="<h2>Repositorios que coinciden con ese nombre:</h2><ul>";
+    for(repo of repoJson.items){
+      list+="<li>"+repo.full_name+"</li>";
+    }
+    list+="</ul>";
+    selec.innerHTML = list;
+  })
+          
 }
 
 function mostrar(){
