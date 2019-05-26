@@ -1,19 +1,21 @@
 import Movie from "./movie";
 import Actor from "./actor";
+import Logger from "./logger";
 
-let alien = new Movie("alien",1993,"1:45 hs");
+const alien = new Movie("alien",1993,"1:45 hs");
 let playButton = document.getElementById("playButton");
 let pauseButton = document.getElementById("pauseButton");
-
+const log = new Logger();
+alien.on("play",()=>{log.log("the play event has been triggered")});
 alien.on("play",alien.play);
 playButton.addEventListener("click",()=>{
     alien.emit("play");
+    alien.off("play");
     alien.on("pause",alien.pause);
     
 });
 pauseButton.addEventListener("click",()=>{
     alien.emit("pause");
-    alien.off("play");
     alien.on("resume",alien.resume);
 });
 playButton.addEventListener("click",()=>{
@@ -29,5 +31,6 @@ let actors = [
 ];
 
 alien.addCast(actors);
-console.log(alien.cast[1].name);
+
+
 

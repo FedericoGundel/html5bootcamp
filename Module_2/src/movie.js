@@ -7,6 +7,7 @@ export default class Movie extends EventEmitter{
       this.duration = duration;
       this.cast = [];
     }
+   
     play(){
       console.log ("the movie has started");
     }
