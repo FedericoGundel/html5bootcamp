@@ -14,13 +14,13 @@ export default class EventEmitter{
         }
     }
     emit(eventName){
-        if(this.events[eventName]!=null){
+        if(!this.events.includes(eventName)){
             for(let ev of this.events[eventName]){
                 ev();
             }
         }        
     }
     off(eventName){
-        this.events[eventName]=null;
+        this.events[eventName]--;
     }
 }

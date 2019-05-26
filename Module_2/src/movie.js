@@ -18,7 +18,7 @@ export default class Movie extends EventEmitter{
       console.log ("movie continues");
     }
     addCast(actors){
-      this.cast = actors;
+      this.cast.push(actors);
     }
     
   }
