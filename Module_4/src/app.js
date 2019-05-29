@@ -15,9 +15,9 @@ function StartDB(){
         console.log("upgrade is called");
         let active = db.result
         store = active.createObjectStore("documents", {
-             keyPath : "id",autoIncremet:true
+             keyPath : "title",autoIncremet:true
         });
-        store.createIndex('by_id', 'id', {
+        store.createIndex('by_title', 'title', {
             unique: false
         });
 
@@ -36,10 +36,13 @@ function StartDB(){
 function save(){
 
     //almacen de datos con LocalStorage
-
-    let text=  document.getElementById("document").value;
-    miStorage.setItem("text",text);
-    console.log("texto almacenado:"+miStorage.getItem("text"));
+    let obj = {
+        title: document.getElementById("title").value,
+        text: document.getElementById("text").value
+        
+    }
+    miStorage.setItem("text",JSON.stringify(obj));
+    console.log("texto almacenado:"+JSON.parse(miStorage.getItem("text")));
 
     //almacen de datos con IndexedDB
 
@@ -48,8 +51,8 @@ function save(){
     let store = data.objectStore("documents");
 
     let request = store.put({
-        id:1,
-        text: document.getElementById("document").value
+        title: document.getElementById("title").value,
+        text: document.getElementById("text").value
     });
 
     request.onerror = (e) => {
@@ -72,9 +75,10 @@ function errase(){
     let active = db.result;
     let data = active.transaction(["documents"], "readwrite");
     let store = data.objectStore("documents");
-    let request = store.delete(1);
+    let title = document.getElementById("title").value;
+    let request = store.delete(title);
 
-    data.oncomplete = (event) => {
+    data.oncomplete = (e) => {
         console.log('Transaction not opened due to error: ' + data.error);
     }
     request.onerror = (e) => {
