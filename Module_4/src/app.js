@@ -7,15 +7,15 @@ let indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedD
 
 let connect = new WebSocket("ws://echo.websocket.org");
 
-    connect.onopen = function () {
+    connect.onopen = () => {
         connect.send("success");
 	};
 
-	connect.onerror = function (error) {
+	connect.onerror =  (error) => {
 	  console.log("WebSocket Error" + error);
 	};
 
-	connect.onmessage = function (e) {
+	connect.onmessage = (e) => {
 	  console.log("Server: " + e.data);
 	};
 
@@ -45,6 +45,7 @@ function dragSalioContainer(e){
 }
 
 window.onload = () =>{
+    let db = null;
     StartDB();
 
     document.getElementById("save").addEventListener("click",save);
