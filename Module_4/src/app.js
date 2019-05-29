@@ -3,12 +3,49 @@ let miStorage = window.localStorage;
 
 let indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 
+
+function dragIniciado(e){
+    let clon = this.cloneNode(true);
+    e.dataTransfer.setData("text", clon.innerHTML)
+}
+
+function drop(e){
+    e.preventDefault();
+    let dato = e.dataTransfer.getData("text");
+    this.innerHTML=dato
+}
+
+function dragSobreContainer(e){
+    e.preventDefault();
+    this.classList.add("over");
+    return false;
+}
+
+function dragSalioContainer(e){
+    e.preventDefault();
+    this.classList.remove("over");
+}
+
 window.onload = () =>{
-    let db = null;
     StartDB();
+
     document.getElementById("save").addEventListener("click",save);
     document.getElementById("errase").addEventListener("click",errase);
+
+    let text_area = document.getElementById("text");
+    let items = document.getElementsByClassName("item");
+    let items_container = document.getElementById("items-container");
+
+    text_area.addEventListener("dragover", dragSobreContainer);
+    text_area.addEventListener("dragleave", dragSalioContainer);
+    text_area.addEventListener("drop", drop);
+
+
+    for(item of items){
+        item.addEventListener("dragstart",dragIniciado); 
+    }
 }
+
 function StartDB(){
     db = indexedDB.open("MyTestDatabase", 4);
     db.onupgradeneeded= (e) => {

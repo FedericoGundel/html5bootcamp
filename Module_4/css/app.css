@@ -6,3 +6,31 @@ body{
     display: flex;
     flex-direction: column;
 }
+#save,#errase{
+    width: 50%;
+    margin-left:auto;
+    margin-right:auto
+}
+#items-container{
+    border: 1px solid rgba(15, 15, 15, 0.2);
+    padding: 25px;
+    background-color: beige;
+    height: 80px;
+}
+.header{
+    font-size: 40px;
+    font-family: Oxygen, sans-serif;
+}
+.item{
+    position: absolute;
+    border-radius: 3px;
+    font-size: 25px;
+    cursor: pointer;
+    border: 1px solid ;
+}
+
+.over {
+    background-color: rgba(15, 15, 15, 0.2);
+    border: 2px solid #F44336;
+    border-radius: 5px;
+  }
