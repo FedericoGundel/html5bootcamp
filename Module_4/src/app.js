@@ -3,6 +3,24 @@ let miStorage = window.localStorage;
 
 let indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB;
 
+//Probando websocket
+
+let connect = new WebSocket("ws://echo.websocket.org");
+
+    connect.onopen = function () {
+        connect.send("success");
+	};
+
+	connect.onerror = function (error) {
+	  console.log("WebSocket Error" + error);
+	};
+
+	connect.onmessage = function (e) {
+	  console.log("Server: " + e.data);
+	};
+
+
+
 
 function dragIniciado(e){
     let clon = this.cloneNode(true);
