@@ -22,27 +22,7 @@ let connect = new WebSocket("ws://echo.websocket.org");
 
 
 
-function dragIniciado(e){
-    let clon = this.cloneNode(true);
-    e.dataTransfer.setData("text", clon.innerHTML)
-}
 
-function drop(e){
-    e.preventDefault();
-    let dato = e.dataTransfer.getData("text");
-    this.innerHTML=dato
-}
-
-function dragSobreContainer(e){
-    e.preventDefault();
-    this.classList.add("over");
-    return false;
-}
-
-function dragSalioContainer(e){
-    e.preventDefault();
-    this.classList.remove("over");
-}
 
 window.onload = () =>{
     let db = null;
@@ -141,4 +121,26 @@ function errase(){
         console.log(request.error.name +" "+request.error.message);
     }
 
+}
+
+function dragIniciado(e){
+    let clon = this.cloneNode(true);
+    e.dataTransfer.setData("text", clon.innerHTML)
+}
+
+function drop(e){
+    e.preventDefault();
+    let dato = e.dataTransfer.getData("text");
+    this.innerHTML=dato
+}
+
+function dragSobreContainer(e){
+    e.preventDefault();
+    this.classList.add("over");
+    return false;
+}
+
+function dragSalioContainer(e){
+    e.preventDefault();
+    this.classList.remove("over");
 }
