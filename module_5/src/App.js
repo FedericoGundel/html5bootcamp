@@ -28,9 +28,7 @@ class App extends Component{
       this.setState({
         moviesById :newMoviesId,
         movies: newMovies
-      })
-      
-      
+      })  
     }
     this.SetFavorite = (id) => {
       const newMovies = this.state.movies
@@ -38,8 +36,20 @@ class App extends Component{
       this.setState({
         movies:newMovies
         
-      })
+      })    
+    }
+    this.editMovie = (e) => {
+      e.preventDefault();
+      const newMovies = this.state.movies
       
+      newMovies[this.movieId.value] = {
+        favorite:false,
+        title:this.editTitle.value,
+        genre:this.editGenre.value
+      }
+      this.setState({
+        movies:newMovies
+      })
     }
     
   }
@@ -72,8 +82,23 @@ class App extends Component{
             <input ref={(input)=>{this.newTitle=input}} type="text" id ="title" placeholder="title"></input>
             <input ref={(input)=>{this.newGenre=input}} type="text" id ="genre" placeholder="genre"></input>
             <button type="submit">Add</button>
-          </div>          
-        </form>
+          </div>
+          </form>
+          <form onSubmit={(e)=>{this.editMovie(e)}}>
+            <div>
+              <label>Edit a Movie:</label>
+              <select ref={(input)=>{this.movieId=input}} placeholder="Choose a movie">
+                {this.state.moviesById.map((id)=> {
+                  return <option value = {id}>{id}</option>
+                })}
+              </select>
+              <input ref={(input)=>{this.editTitle=input}} type="text" placeholder="title"></input>
+              <input ref={(input)=>{this.editGenre=input}} type="text" placeholder="genre"></input>
+              <button type="submit">Edit</button>
+            </div>    
+          </form>
+                
+        
         <div>
           <h1>Favorites Movie list</h1>
           <FavMovieList
