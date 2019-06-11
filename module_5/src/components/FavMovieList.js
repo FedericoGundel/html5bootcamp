@@ -5,7 +5,7 @@ import Movie from './Movie.js'
 class FavMovieList extends Component{
   render(){
     const movies = this.props.ids.map((id)=>{return this.props.movies[id]})
-    const favMovies = movies.filter((mov)=>{return mov.favorite==true})
+    const favMovies = movies.filter((mov)=>{return mov.favorite===true})
    
     return (
         

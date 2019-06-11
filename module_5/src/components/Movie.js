@@ -2,15 +2,11 @@ import React, { Component } from 'react';
 
 
 
-class Movie extends Component{
-    constructor(){
-        super();
-       
-    }
+class Movie extends Component{   
   
   render(){
         
-        if(this.props.fav !== true){
+        
             return (
                 <ul>
                     <li>
@@ -19,28 +15,16 @@ class Movie extends Component{
                             <p>title: {this.props.movie.title}</p>
                             <p>genre: {this.props.movie.genre}</p>
                             <button type='button' onClick={()=>{this.props.SetFavorite(this.props.id)}} >Add to Favorites </button>
+                            <button type='button' onClick={()=>{this.props.delete(this.props.id)}} >Delete </button>
                         </div>
                     </li>
                 </ul>
-            );
-        }else{
-            return (
-                <ul>
-                    <li>
-                        <div>
-                            <p>title: {this.props.movie.title}</p>
-                            <p>genre: {this.props.movie.genre}</p>
-                            
-                        </div>
-                    </li>
-                </ul>
-            );
-        }
+            )
         
-    }
+    
     
   
   
 }
-
-export default Movie;
+}
+export default Movie
