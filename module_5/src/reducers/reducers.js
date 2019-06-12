@@ -5,12 +5,8 @@ const initialState ={ data: [],
  
 
   export const movies = (state = initialState, action) => {
-    const data2 = function(id) {return state.data.map((o)=>{
-      if(o===state.data[id]){
-          return {...o,favorite:!state.data[id].favorite}
-      }
-      else return o
-  })}
+    
+    
   
     switch (action.type) {
       case "ADD_MOVIE":    
@@ -26,12 +22,27 @@ const initialState ={ data: [],
        return state;
        break;
       case "SET_FAVORITE":
+          const setFav = function(id) {return state.data.map((o)=>{
+            if(o===state.data[id]){
+                return {...o,favorite:!state.data[id].favorite}
+            }
+            else return o
+        })}
         return{...state,
-              data:data2(action.payload)}
+              data:setFav(action.payload)}
           /*return state.data.map(movie =>
             movie.id === action.payload ? { ...movie, favorite: !movie.favorite } : movie
           )*/
       break;
+      case "EDIT_MOVIE":
+          const editData = function(id) {return state.data.map((o)=>{
+            if(o===state.data[id]){
+                return {...o,title:action.payload.title,genre:action.payload.genre}
+            }
+            else return o
+        })}
+        return{...state,
+          data:editData(action.payload.id)}
       default:
         return state;
     }

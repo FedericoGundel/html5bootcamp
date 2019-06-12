@@ -28,19 +28,7 @@ class App extends Component{
         
       })    
     }
-    this.editMovie = (e) => {
-      e.preventDefault();
-      const newMovies = this.state.movies
-      
-      newMovies[this.movieId.value] = {
-        favorite:false,
-        title:this.editTitle.value,
-        genre:this.editGenre.value
-      }
-      this.setState({
-        movies:newMovies
-      })
-    }
+    
     this.deleteMovie = (id) =>{
       const newMovies = this.state.movies;
       delete newMovies[id]
@@ -70,19 +58,7 @@ class App extends Component{
           />
           
         
-          <form onSubmit={(e)=>{this.editMovie(e)}}>
-            <div>
-              <label>Edit a Movie:</label>
-              <select ref={(input)=>{this.movieId=input}} placeholder="Choose a movie">
-                {this.state.moviesById.map((id)=> {
-                  return <option value = {id}>{id}</option>
-                })}
-              </select>
-              <input ref={(input)=>{this.editTitle=input}} type="text" placeholder="title"></input>
-              <input ref={(input)=>{this.editGenre=input}} type="text" placeholder="genre"></input>
-              <button type="submit">Edit</button>
-            </div>    
-          </form>
+         
                 
         
         <div>

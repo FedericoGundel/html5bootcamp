@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MovieList from './../components/MovieList.js';
 import { connect } from 'react-redux'
-import {addMovie,setFavorite} from "./../actions/actions.js"
+import {addMovie,setFavorite,editMovie} from "./../actions/actions.js"
 import store from "./../reducers/store.js"
  
 class MovieListContainer extends Component{
@@ -18,7 +18,14 @@ class MovieListContainer extends Component{
     store.subscribe =(() =>{})
     console.log(store.getState())
   }
-  
+  editMovie = (e) =>{
+    e.preventDefault();
+    const data = new FormData(e.target);
+    const newTitle = data.get("title");
+    const newGenre = data.get("genre");
+    const id = data.get("id");
+    this.props.editMovie(id,newTitle,newGenre)
+  }
  
   
   render(){
@@ -38,8 +45,22 @@ class MovieListContainer extends Component{
             <button type="submit">Add</button>
           </div>
           </form>
-        
+
+      <form onSubmit={(e)=>{this.editMovie(e)}}>
+            <div>
+              <label>Edit a Movie:</label>
+              <select name = "id" placeholder="Choose a movie">
+                {this.props.ids.map((id)=> {
+                  return <option value = {id}>{id}</option>
+                })}
+              </select>
+              <input name = "title"type="text" placeholder="title"></input>
+              <input name = "genre" type="text" placeholder="genre"></input>
+              <button type="submit">Edit</button>
+            </div>    
+      </form>  
      </div>
+     
       
     )
     }
@@ -49,7 +70,9 @@ class MovieListContainer extends Component{
       addMovie: (title,genre)=>
         dispatch(addMovie(title,genre)),
       setFavorite: (id)=>
-        dispatch(setFavorite(id))
+        dispatch(setFavorite(id)),
+      editMovie: (id,title,genre) =>
+        dispatch(editMovie(id,title,genre))
     }
   )
   const mapStateToProps = (state) => { 

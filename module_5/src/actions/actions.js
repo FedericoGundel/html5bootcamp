@@ -1,8 +1,12 @@
 let cantItems = 0;
-export const setTitle = (title) =>{
+export const editMovie = (id,title,genre) =>{
     return {
-        type:"SET_TITLE",
-        payload:title
+        type:"EDIT_MOVIE",
+        payload: {
+            id:id,
+            title:title,
+            genre:genre
+        }
     }
 }
 export const setGenre = (genre) =>{
