@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MovieListContainer from './containers/MovieListContainer.js';
-//import FavMovieList from './components/FavMovieList.js';
+import FavMovieListContainer from './containers/FavMovieListContainer.js';
 
 //import './App.css';
 
@@ -66,7 +66,6 @@ class App extends Component{
         <h1>Movie list</h1>
           <MovieListContainer
             delete = {this.deleteMovie}
-            SetFavorite = {this.SetFavorite}
         
           />
           
@@ -88,7 +87,7 @@ class App extends Component{
         
         <div>
           <h1>Favorites Movie list</h1>
-          
+          <FavMovieListContainer/>
         </div>
      
       </div>

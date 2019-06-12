@@ -144,3 +144,44 @@ function dragSalioContainer(e){
     e.preventDefault();
     this.classList.remove("over");
 }
+
+let object = {
+    data:[
+        {
+            fav:true,
+            text:"afsd"
+        },
+        {
+            fav:true,
+            text:"ashd"
+        },
+        {
+            fav:true,
+            text:"askd"
+        }
+    ],
+    arr:[1,2,3]
+}
+const data2 = function(id) {return object.data.map((o)=>{
+    if(o===object.data[id]){
+        return {...o,fav:!object.data[id].fav}
+    }
+    else return o
+})}
+
+let obj = {...object,
+        arr:object.arr,
+        data:data2(1)
+}
+
+
+    /*object.data.map((item) =>{
+    if (item.id ===1){
+        return {...object.item, fav: !item.fav}
+    }})*/
+        
+        
+    console.log(object)
+    console.log(obj)
+    console.log(data2(1))
+    

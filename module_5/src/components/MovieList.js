@@ -4,6 +4,12 @@ import Movie from './Movie.js'
 
 
 class MovieList extends Component{
+  constructor(props){
+    super(props)
+    
+    
+   
+  }
   render(){
     const set = (this.props.SetFavorite)
     const del = (this.props.delete)
@@ -11,11 +17,15 @@ class MovieList extends Component{
       
       <ul>
       {this.props.ids.map((id)=> {
-          return <Movie delete = {del}
-                        SetFavorite = {set}
-                        movie = {this.props.movies[id]} 
-                        id = {id}
-                        key = {id}/>
+          return    <div>
+                      <Movie
+                          movie = {this.props.movies[id]} 
+                          id = {id}
+                          key = {id}/>
+                      <button type='button' onClick={()=>{set(id)}} >Add to Favorites </button>
+                      <button type='button' onClick={()=>{del(id)}} >Delete </button>
+                    </div>
+                    
                         
       })}
       </ul>

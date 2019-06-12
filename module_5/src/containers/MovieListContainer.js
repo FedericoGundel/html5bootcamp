@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import MovieList from './../components/MovieList.js';
 import { connect } from 'react-redux'
-import {addMovie} from "./../actions/actions.js"
+import {addMovie,setFavorite} from "./../actions/actions.js"
 import store from "./../reducers/store.js"
+ 
 class MovieListContainer extends Component{
-  constructor(){
-    super()
-   
+  constructor(props){
+    super(props)
+
   }
   HandleAddForm = (e) =>{
     e.preventDefault();
@@ -14,21 +15,20 @@ class MovieListContainer extends Component{
     const newTitle = data.get("title");
     const newGenre = data.get("genre");
     this.props.addMovie(newTitle,newGenre)
+    store.subscribe =(() =>{})
     console.log(store.getState())
-
   }
+  
  
   
   render(){
-    console.log(this.props.movies)
-    
     return (
      <div>
        <MovieList
-      delete = {this.props.deleteMovie}
-      SetFavorite = {this.props.SetFavorite}
-      movies = {this.props.movies}
-      ids = {this.props.ids}
+        delete = {this.props.deleteMovie}
+        SetFavorite = {this.props.setFavorite}
+        movies = {this.props.movies}
+        ids = {this.props.ids}
       />
       <form onSubmit={(e)=>{this.HandleAddForm(e)}}>
           <div>
@@ -47,10 +47,14 @@ class MovieListContainer extends Component{
   const mapDispatchToProps = (dispatch) => (
     {
       addMovie: (title,genre)=>
-        dispatch(addMovie(title,genre))
+        dispatch(addMovie(title,genre)),
+      setFavorite: (id)=>
+        dispatch(setFavorite(id))
     }
   )
-  const mapStateToProps = state => ({ movies : state.movies.data ,
-                                      ids : state.movies.moviesId})
+  const mapStateToProps = (state) => { 
+    return {movies : state.movies.data ,
+            ids : state.movies.moviesId}
+          }
 
   export default connect(mapStateToProps,mapDispatchToProps)(MovieListContainer)

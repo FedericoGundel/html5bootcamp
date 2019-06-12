@@ -1,10 +1,8 @@
-import { createStore,combineReducers } from "redux"
+import { createStore,applyMiddleware,combineReducers } from "redux"
+import logger from 'redux-logger'
+import{ movies} from "./reducers.js"
 
-import{ moviesReducer,movies} from "./reducers.js"
 
+const store = createStore(combineReducers({movies}),window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
-const store = createStore(combineReducers({  movies }),window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-store.subscribe =( () =>{
-    console.log("store updated",store.getState())
-    }) 
 export default store

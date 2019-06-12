@@ -18,6 +18,13 @@ export const addMovie = (title,genre) =>{
             id:cantItems++,
             title:title,
             genre:genre
+        }
     }
 }
+export const setFavorite = (id) =>{
+    return {
+        type:"SET_FAVORITE",
+        payload:id
+    }
 }
+
