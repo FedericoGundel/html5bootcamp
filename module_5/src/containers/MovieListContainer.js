@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MovieList from './../components/MovieList.js';
 import { connect } from 'react-redux'
-import {addMovie,setFavorite,editMovie} from "./../actions/actions.js"
+import {addMovie,setFavorite,editMovie,deleteMovie} from "./../actions/actions.js"
 import store from "./../reducers/store.js"
  
 class MovieListContainer extends Component{
@@ -16,7 +16,7 @@ class MovieListContainer extends Component{
     const newGenre = data.get("genre");
     this.props.addMovie(newTitle,newGenre)
     store.subscribe =(() =>{})
-    console.log(store.getState())
+    
   }
   editMovie = (e) =>{
     e.preventDefault();
@@ -26,9 +26,10 @@ class MovieListContainer extends Component{
     const id = data.get("id");
     this.props.editMovie(id,newTitle,newGenre)
   }
- 
+  
   
   render(){
+    console.log(store.getState())
     return (
      <div>
        <MovieList
@@ -72,7 +73,9 @@ class MovieListContainer extends Component{
       setFavorite: (id)=>
         dispatch(setFavorite(id)),
       editMovie: (id,title,genre) =>
-        dispatch(editMovie(id,title,genre))
+        dispatch(editMovie(id,title,genre)),
+        deleteMovie: (id)=>
+        dispatch(deleteMovie(id))
     }
   )
   const mapStateToProps = (state) => { 

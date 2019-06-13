@@ -31,4 +31,10 @@ export const setFavorite = (id) =>{
         payload:id
     }
 }
+export const deleteMovie = (id) =>{
+    return {
+        type:"DELETE_MOVIE",
+        payload:id
+    }
+}
 

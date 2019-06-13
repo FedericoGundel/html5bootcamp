@@ -16,14 +16,14 @@ class MovieList extends Component{
     return (
       
       <ul>
-      {this.props.ids.map((id)=> {
+      {this.props.movies.map((m)=> {
           return    <div>
                       <Movie
-                          movie = {this.props.movies[id]} 
-                          id = {id}
-                          key = {id}/>
-                      <button type='button' onClick={()=>{set(id)}} >Add to Favorites </button>
-                      <button type='button' onClick={()=>{del(id)}} >Delete </button>
+                          movie = {m}
+                          id = {m.id}
+                          key = {m.id}/>
+                      <button type='button' onClick={()=>{set(m.id)}} >Add to Favorites </button>
+                      <button type='button' onClick={()=>{del(m.id)}} >Delete </button>
                     </div>
                     
                         
